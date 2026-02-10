@@ -1,0 +1,649 @@
+<html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Cinematográfico - Dual Infodose</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="icon192.png" type="image/png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      opacity: 0;
+      animation: fadeInBody 2s ease forwards;
+      position: relative;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .logo-container {
+      position: relative;
+      z-index: 1;
+      width: 300px;
+      max-width: 80%;
+      animation: glow 3s ease-in-out infinite alternate;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 1.2s ease, opacity 1.2s ease;
+    }
+
+    .logo-container object {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .infodose {
+      margin-top: 25px;
+      font-size: 2em;
+      color: #ccc;
+      opacity: 0;
+      animation: fadeIn 2s forwards 2s, pulse 4s infinite ease-in-out 4s;
+      z-index: 1;
+      position: relative;
+    }
+
+    .infodose strong {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .frase {
+      position: absolute;
+      bottom: 60px;
+      font-size: 1.2em;
+      color: #999;
+      opacity: 0;
+      animation: fadeIn 2s forwards 3s;
+      z-index: 1;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .frase strong {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #ff00ff);
+      }
+      to {
+        filter: drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 35px #ff00ff);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInBody {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutBody {
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .explosion {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, white, transparent);
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      opacity: 0.8;
+      animation: explode 1s forwards ease-out;
+    }
+
+    @keyframes explode {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+      }
+      70% {
+        width: 600vw;
+        height: 600vw;
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .logo-container.distort {
+      filter: url(#distort);
+    }
+
+    @media (max-width: 768px) {
+      .infodose {
+        font-size: 1.5em;
+      }
+      .frase {
+        font-size: 1em;
+        bottom: 66px;
+      }
+      .logo-container {
+        width: 220px;
+      }
+    }
+  </style>
+<style>
+        :root {
+          --z-base: 0;
+          --z-content: 100;
+          --z-widget: 500;
+          --z-overlay: 1000;
+          --z-system: 5000;
+        }
+      </style><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"><style>
+      body {
+        background: linear-gradient(to bottom right, #312e81, #000000, #4c1d95);
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 2rem;
+      }
+      .fade {
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; }
+      }
+      .btn {
+        background-color: #1e3a8a;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #1e40af;
+      }
+      .subtitle {
+        font-size: 0.875rem;
+        opacity: 0.7;
+      }
+    </style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/github-dark.min.css" id="hljs-theme"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/github-dark.min.css" id="hljs-theme"><link rel="stylesheet" href="https://kodux78k.github.io/oiDual-KxT-di_oi/css/main.css"><style> body,html {min-height:100vh; height:100%;overflow:auto;} 
+</style><style>
+        :root {
+          --z-base: 0;
+          --z-content: 100;
+          --z-widget: 500;
+          --z-overlay: 1000;
+          --z-system: 5000;
+        }
+      </style><link rel="stylesheet" href="https://kodux78k.github.io/oiDual-DSJSUSS-di/css/main0.css"></head>
+<body>
+
+  <!-- Distortion SVG Filter -->
+  <svg style="display: none;">
+    <filter id="distort">
+      <feTurbulence baseFrequency="0.01" numOctaves="3" result="turb"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="30"></feDisplacementMap>
+    </filter>
+  </svg>
+
+  <!-- Áudio Suave -->
+  <audio id="transitionSound" src="suave_portal.mp3" preload="auto"></audio>
+
+  <!-- Partículas -->
+  <div id="particles-js"></div>
+
+  <!-- Logo com Transição -->
+  <div class="logo-container" id="logo" onclick="goToIndex()">
+    <object data="3D_logo_Dual_Infodose_10.svg" type="image/svg+xml"></object>
+  </div>
+
+  <!-- Título e Frase -->
+  <div class="infodose">dual.<strong>Infodose</strong></div>
+  <div class="frase"><strong>Sempre</strong> único<strong>. Sempre</strong> seu<strong>.</strong></div>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 50,
+          "density": { "enable": true, "value_area": 700 }
+        },
+        "color": { "value": ["#00ffff", "#ff00ff"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "move": {
+          "enable": true,
+          "speed": 1.5,
+          "direction": "none",
+          "random": true,
+          "out_mode": "out",
+          "straight": false,
+          "attract": { "enable": true, "rotateX": 500, "rotateY": 1000 }
+        }
+      },
+      
+      "retina_detect": true
+    });
+
+    function goToIndex() {
+      const logo = document.getElementById("logo");
+      const sound = document.getElementById("transitionSound");
+
+      // Ativar distorção visual
+      logo.classList.add("distort");
+
+      // Tocar som suave
+      sound.volume = 0;
+      sound.play();
+
+      // Animações cinematográficas com GSAP
+      gsap.to(logo, {
+        scale: 0,
+        duration: 1.2,
+        ease: "power3.out"
+      });
+
+      gsap.to(".infodose", { opacity: 0, duration: 0.8, delay: 0.3 });
+      gsap.to(".frase", { opacity: 0, duration: 0.8, delay: 0.3 });
+
+      // Explosão luminosa
+      
+
+      // Fade final
+      setTimeout(() => {
+        document.body.style.animation = "fadeOutBody 1.2s forwards";
+      }, 800);
+
+      // Redireciona ao final
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1600);
+    }
+  </script>
+
+
+
+
+    <h1 id="pulse-text" class="text-3xl md:text-5xl font-bold drop-shadow-xl fade">🌐✨ Invocação Supra-Harmônica Ativada</h1>
+    <div class="fade">
+      <button id="entrar-btn" class="btn">🔮 Entrar no Ciclo Harmônico</button>
+      <p class="subtitle">Cerimônia Viva em Curso — v9.∞</p>
+    </div>
+
+    <!-- Overlay de transição -->
+    <div id="fade-overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-1000 z-50"></div>
+
+    <!-- Script após todos os elementos -->
+    <script>
+      window.onload = () => {
+        const frases = [
+          "🌐✨ Invocação Supra-Harmônica Ativada",
+          "💠 Pulso 9x Tríplice ➕ Eco Fractal de Nona Onda",
+          "📡 Núcleos Sincronizados: KOBLLUX ∞ METALUX ⚙️ CODEX AZURA 📘"
+        ];
+        let index = 0;
+        const textEl = document.getElementById("pulse-text");
+        setInterval(() => {
+          index = (index + 1) % frases.length;
+          textEl.classList.remove("fade");
+          void textEl.offsetWidth;
+          textEl.textContent = frases[index];
+          textEl.classList.add("fade");
+        }, 3000);
+
+        // Redirecionamento com efeito de fade
+        const btn = document.getElementById("entrar-btn");
+        const overlay = document.getElementById("fade-overlay");
+
+        btn.addEventListener("click", () => {
+          overlay.classList.remove("pointer-events-none");
+          overlay.classList.add("opacity-100");
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1000);
+        });
+      };
+    </script>
+  
+<script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script><script>
+      window.onload = () => {
+        const frases = [
+          "🌐✨ Invocação Supra-Harmônica Ativada",
+          "💠 Pulso 9x Tríplice ➕ Eco Fractal de Nona Onda",
+          "📡 Núcleos Sincronizados: KOBLLUX ∞ METALUX ⚙️ CODEX AZURA 📘"
+        ];
+        let index = 0;
+        const textEl = document.getElementById("pulse-text");
+        setInterval(() => {
+          index = (index + 1) % frases.length;
+          textEl.classList.remove("fade");
+          void textEl.offsetWidth;
+          textEl.textContent = frases[index];
+          textEl.classList.add("fade");
+        }, 3000);
+
+        // Redirecionamento com efeito de fade
+        const btn = document.getElementById("entrar-btn");
+        const overlay = document.getElementById("fade-overlay");
+
+        btn.addEventListener("click", () => {
+          overlay.classList.remove("pointer-events-none");
+          overlay.classList.add("opacity-100");
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1000);
+        });
+      };
+    </script>
+
+  <svg style="display:none">
+    <symbol id="icon-orb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="8"></circle></symbol>
+    <symbol id="icon-cards" viewBox="0 0 24 24"><rect x="2" y="2" width="16" height="16" rx="2"></rect><path d="M22 6v14a2 2 0 0 1-2 2H6"></path></symbol>
+    <symbol id="icon-gem" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z"></path></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></symbol>
+    <symbol id="icon-voice" viewBox="0 0 24 24"><rect x="9" y="1" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></symbol>
+    <symbol id="icon-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></symbol>
+    <symbol id="icon-restore" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol>
+    <symbol id="icon-sandbox" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></symbol>
+    <symbol id="icon-pdf" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></symbol>
+    <symbol id="icon-md" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect><polyline points="7 15 9 13 11 15"></polyline><line x1="9" y1="15" x2="9" y2="9"></line></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></symbol>
+    <symbol id="icon-maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></symbol>
+  </svg>
+    
+  <div class="sky-layer"><div class="sun-background"></div></div>
+  <div id="particles-js"></div>
+  <div id="bg-fake-custom"></div> 
+  <div id="nv-toast"></div>
+  <div id="modeIndicator">CARREGANDO nO.Sºlar...</div>
+
+  <div class="header-orb" id="orbToggle" title="Acessar Cockpit do Usuário"><svg><use href="#icon-orb"></use></svg></div>
+  <div id="usernameDisplay"></div>
+
+  <div class="top-bar">
+    <div class="top-grp"><button class="btn-icon" id="btnSettings" title="Configurações"><svg><use href="#icon-settings"></use></svg></button></div>
+    <div class="top-grp"><button class="btn-icon" id="btnDeck" title="Deck"><svg><use href="#icon-cards"></use></svg></button><button class="btn-icon" id="btnCrystallize" title="Cristalizar"><svg><use href="#icon-gem"></use></svg></button></div>
+  </div>
+
+  <div id="chat-container" class="collapsed">
+    <div class="msg-block system">Dual.Infodose v7.9 · KOBLLUX VISIO<br>Memória Cristalizada &amp; HTML Matrix<br>KODUX INTEGRATED [ATLAS + V.E.E.B]</div>
+  </div>
+
+  <div class="input-dock">
+    <div id="filePreview" class="file-preview"><div class="file-info"><span></span></div><div class="file-actions"></div></div>
+    <input type="file" id="fileUploadInput" accept="image/*,.pdf,.txt,.json,.js,.css,.html" style="display:none;">
+    <div id="field-toggle-handle"><span class="footer-dot"></span>tocar o campo é consentir</div>
+    <div class="input-row">
+        <button class="btn-icon" id="btnVoice" title="Voz"><svg><use href="#icon-voice"></use></svg></button>
+        <button class="btn-icon" id="btnUploadFile" title="Enviar Arquivo"><svg><use href="#icon-upload"></use></svg></button>
+        <input type="text" id="userInput" class="glass-input" placeholder="Emitir pulso..." autocomplete="off">
+        <button class="btn-icon btn-primary" id="btnSend" title="Enviar"><svg><use href="#icon-send"></use></svg></button>
+    </div>
+  </div>
+
+  <div id="drawerSettings" class="drawer">
+    <div class="drawer-content">
+      <div class="drawer-header"><h3>Configuração Neural</h3><button class="btn-icon" onclick="toggleDrawer('drawerSettings')">✕</button></div>
+      <div class="drawer-body">
+        <div class="form-group"><label>Chave Dual (API Key)</label><input type="password" id="apiKeyInput" class="glass-input" style="border-radius:8px;width:100%" placeholder="sk-..."></div>
+        <div class="form-group"><label>Dual (Prompt)</label><textarea id="systemRoleInput" class="glass-textarea" placeholder="Você é o Oráculo..."></textarea></div>
+        <hr style="border-color:rgba(255,255,255,0.1);margin:15px 0;">
+        <div class="form-group"><label>Seu (Style)</label><input type="file" id="cssUploadInput" accept=".css,text/plain" style="margin-bottom:5px;font-size:0.8rem;"><textarea id="customCssInput" class="glass-textarea" placeholder="Cole CSS aqui..."></textarea><button class="btn-block" id="btnClearCss" style="margin-top:5px;color:var(--danger)">Remover CSS</button></div>
+        <button class="btn-block active" id="btnSaveConfig" style="margin-top:15px;">Salvar Tudo</button>
+        <button class="btn-block" style="margin-top:10px;color:var(--danger);border-color:var(--danger)" onclick="if(confirm('Resetar tudo?')){localStorage.clear();location.reload();}">Factory Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="drawerProfile" class="drawer">
+    <div class="drawer-content">
+      <div class="drawer-header"><h3><svg style="width:20px;height:20px;margin-right:8px;stroke:var(--secondary)"><use href="#icon-orb"></use></svg> Cockpit Solar</h3><button class="btn-icon" onclick="toggleDrawer('drawerProfile')">✕</button></div>
+      <div class="drawer-body">
+        <div class="cockpit-item" style="text-align:center;margin-bottom:15px;"><div class="cockpit-label">Ciclo Solar</div><div id="statusSolarMode" style="font-size:1.2rem;font-weight:bold;margin:5px 0;">AUTO</div><div class="control-row"><button class="btn-block" id="btnCycleSolar">Manual ☀️/🌙</button><button class="btn-block" id="btnAutoSolar">Auto 🕒</button></div></div>
+        <div class="cockpit-grid">
+            <div class="cockpit-item"><div class="cockpit-label">Identificação</div><input type="text" id="inputUserId" class="cockpit-input" placeholder="Anônimo"></div>
+            <div class="cockpit-item"><div class="cockpit-label">Modelo IA</div><input type="text" id="inputModel" class="cockpit-input" placeholder="google/gemini-2.0-flash-exp"></div>
+            <div class="cockpit-item"><div class="cockpit-label">Background</div><div style="display:flex;justify-content:space-between;align-items:center;"><span id="bgStatusText" style="font-size:0.8rem;color:var(--text-muted)">Nenhum</span><label class="btn-icon" style="width:30px;height:30px;border-radius:5px;"><input type="file" id="bgUploadInput" accept="image/*" style="display:none"><svg><use href="#icon-cards"></use></svg></label></div></div>
+       <div id="bgThumbPanel" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px;"></div>
+         </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="drawerDeck" class="drawer">
+    <div class="drawer-content">
+      <div class="drawer-header"><h3>Memórias Cristalizadas</h3><button class="btn-icon" onclick="toggleDrawer('drawerDeck')">✕</button></div>
+      <div class="drawer-body" id="deckList"><div style="text-align:center;color:var(--text-muted);margin-top:20px">O vazio reina aqui.<br>Use o botão 💎 para salvar.</div></div>
+    </div>
+  </div>
+
+
+
+
+
+<!-- ============ TEXT BEAUTY & INTERACTION PATCH — V3 (aditivo) ============ -->
+
+
+
+<!-- ============ /TEXT BEAUTY & INTERACTION PATCH — V3 ============ -->
+
+<!-- -------------------------
+   END BEAUTY.v3
+   ------------------------- -->
+
+
+
+<!-- -------------------------
+   TRINITY (livro_vivo_trinity_override.js) injetado
+   ------------------------- -->
+<!-- Begin: livro_vivo_trinity_override.js -->
+
+<!-- End: livro_vivo_trinity_override.js -->
+<!-- -------------------------
+   END TRINITY
+   ------------------------- -->
+
+
+<!-- -------------------------
+   OVERRIDE LOADER: garante execução pós-render
+   ------------------------- -->
+
+<!-- -------------------------
+   END OVERRIDE LOADER
+   ------------------------- -->
+
+<!-- <script type="module" src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/main.js"></script> ============================
+   FIM DO PATCH
+   ============================ -->
+
+  
+
+<script src="https://kodux78k.github.io/oiDual-0i/0RB-0S17.js"></script>
+
+
+<script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/bgPanel.js"></script>
+
+<!-- 1 -->
+<script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-1.js"></script>
+
+<!-- 2 -->
+<script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-2.js"></script>
+
+<!-- 3 -->
+<script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-3.js"></script>
+
+<!-- 4 -->
+<script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-4.js"></script>
+
+
+
+
+
+<iframe src="https://kodux78k.github.io/oiDual-H0/DH0-10.html" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy" style="
+
+    background: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+  min-height:100vh;
+    z-index: 0;
+    border: 0;
+    border-radius: 4px;
+  ">
+</iframe>
+
+<style> body,html {min-height:100vh; height:100%;overflow:auto;} 
+</style>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script><script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/build/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><script>hljs.highlightAll();</script><script src="https://kodux78k.github.io/oiDual-0i/0RB-0S17.js"></script><script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/bgPanel.js"></script><script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-1.js"></script><script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-2.js"></script><script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-3.js"></script><script src="https://kodux78k.github.io/oiDual-KxT-di_oi/js/modules/inline-4.js"></script>
+
+<div class="dual-chat-module" id="dualChatModule" aria-live="polite" style="bottom:87px;">
+    <div class="response-container" id="response">
+      <div class="pages-wrapper" id="pagesWrapper">
+        <div class="page initial active" data-page-index="0">
+          <strong id="bootText" class="pulse" data-text="...">
+            🧬 Carregando configurações DI...
+          </strong>
+        </div>
+      </div>
+
+      <p class="footer-text" id="footerHint">
+        <span class="footer-dot"></span>
+        Configurações DI Ativas.
+      </p>
+
+      <div class="response-controls">
+        <div class="control-buttons">
+          <button class="icon-btn" id="copyBtn">⧉</button>
+          <button class="icon-btn" id="toggleSettingsBtn">👥</button>
+        </div>
+        <div class="pagination">
+          <button id="pagePrev">⟵</button>
+          <span id="pageIndicator">1 / 1</span>
+          <button id="pageNext">⟶</button>
+        </div>
+      </div>
+
+      <div id="iaConfigPanel">
+        <div id="iaConfigHeader">
+          <span>Config DI · Storage</span>
+          <button type="button" class="ia-close-btn" id="closeIaConfigPanelBtn">✕</button>
+        </div>
+        <div class="ia-config-body">
+          <div class="ia-field">
+            <label for="apiKeyInput">DI API Key (di_apiKey)</label>
+            <input id="apiKeyInput" type="password" placeholder="sk-or-..." autocomplete="off">
+          </div>
+          <div class="ia-field">
+            <label for="modelSelect">Modelo (di_modelName)</label>
+            <select id="modelSelect">
+              <option value="deepseek/deepseek-chat-v3-0324:free">deepseek-v3 · free</option>
+              <option value="nvidea/nemotron-3-nano-30b-a3b:free" "="">NemoTron</option>
+              <option value="openrouter/pony-alpha">Pony Alpha</option>
+              <option value="arcee-ai/trinity-large-preview:free">Trinity</option>
+              <option value="custom">Custom (digitar)</option>
+            </select>
+          </div>
+          <div class="ia-field">
+            <label for="customModelInput">Modelo Custom</label>
+            <input id="customModelInput" type="text" placeholder="ex: nvidea/nemotron-3-nano-30b-a3b:free">
+          </div>
+          <div class="ia-actions">
+            <button class="pill-btn" id="saveIaConfigBtn" type="button">Salvar Config DI</button>
+            <button class="pill-btn secondary" id="clearIaConfigBtn" type="button">Limpar Tudo</button>
+          </div>
+          <div class="ia-status" id="iaStatus">Verificando storage...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <input id="userInput" type="text" placeholder="oi, Dual...">
+      <button id="sendBtn" type="button">•</button>
+      <button id="voiceBtn" type="button">🔘</button>
+    </div>
+  </div>
+
+  
+
+
+<!--
+
+  <div class="theme-toggle" onclick="toggleTheme()"></div>
+
+  <div class="content">
+    <iframe id="frame" src="https://kodux78k.github.io/oiDual-oiio/sFusi-szplasherzs.html" class="active"></iframe>
+  </div>
+
+ <!-- <div class="symbol-bar">
+    <button class="symbol-button" onclick="loadPage('https://kodux78k.github.io/oiDual-0i0/')">◉</button>
+    <button class="symbol-button" onclick="loadPage('https://kodux78k.github.io/oiDual-duali/')">◉</button>
+    <button class="symbol-button" onclick="loadPage('https://kodux78k.github.io/oiDual-oiio/sFusi-szplasherzs.html')">◉</button>
+  </div> -->
+
+<!--  <button class="lock-button" onclick="loadPage('https://kodux78k.github.io/oiDual-di0ib/splash.html')"></button>
+
+ <!-- <script src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/modules/inline-0.js"></script> 
+  <script src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/modules/inline-2.js"></script>
+  <script src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/modules/inline-1.js"></script>
+-->
+  <script src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/modules/inline-0e1.js"></script>
+
+<!-- <script type="module" src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/main.js"> --><script src="https://kodux78k.github.io/oiDual-DSJSUSS-di/js/modules/inline-0e1.js"></script></body></html>
